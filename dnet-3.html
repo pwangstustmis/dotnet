@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>標籤協助(TagHelper)與選擇器(Selector)</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+      <ul class="nav flex-column text-white w-100">
+        <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+          <p style="color:rgb(248, 138, 11);font-weight: 700;">網頁程式設計<br/>ASP.Net Core</p>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
+            <span class="mx-2">課程簡介</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic1">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="index.html">網頁應用架構</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-html.html">HTML</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-css.html">CSS</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-javascript.html">JavaScript</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+            <span class="mx-2">.NET Core-MVC</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic2">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="dnet-1.html">第一個MVC專案</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="dnet-2.html">資料傳遞-控制器到檢視</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="dnet-3.html">標籤協助(TagHelper)</a></li>
+            </ul>
+            <ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="dnet-5.html">資料庫存取(Entity Framework)</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="dnet-4.html">動作選擇器(Action Selector)</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-html.html">控制器(COntroller)</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-css.html">檢視(View)</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="intro-javascript.html">資料模型</a></li>
+            </ul>
+          </div>              
+        </li>      
+    </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">.NET Core-MVC</li>
+          <li class="breadcrumb-item">標籤協助(TagHelper)與選擇器(Selector)</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-dark p-3">標籤協助(TagHelper)</h3>
+        <p class="px-3">
+          標籤協助可讓伺服器端程式碼參、建立和轉譯檔案中的HTML元素，標籤協助如同HTML屬性標籤內嵌於HTML標籤中，常用標籤協助的MTHL標籤包含 <code style="color:#f00">錨點標籤、</code>Razor語法包含Razor標記、C#和 HTML。伺服器端會解析Razor並將結果呈現於檢視頁面中，透過Razor，設計者設計動態資料導向的網頁應用。
+        </p>
+              
+        <div class="px-3">
+          <h5>錨點標籤協助</h5>
+          <p>
+            常用錨點標籤協助包含 <code style="color:#f00">asp-controller、asp-action、asp-route-{對應動作代入參數名稱}、asp-all-route-data、asp-route</code> ，以下對上述錨點標籤協助進行說明：
+          </p>
+          <ul>
+            <li>
+              asp-controller、asp-action：用於指定連結錨點所連結的控制器與動作，例如當使用者設定 <code style="color:#f00">&lt;a href="/Home/Index"&gt;回首頁&lt;/a&gt;</code> 代表點選時會執行Home控制器中的Inde動作，利用錨點標籤協助可改寫為 <code style="color:#f00">&lt;a asp-controller="Home" asp-action="Index"&gt;回首頁&lt;/a&gt;</code>。
+            </li>
+            <li>
+              asp-route-{對應動作代入參數名稱}：用於設定動作代入值，例如Privacy動作有一代入值，而且代入變數名稱為sid，希望透過連結錨點將資料傳至Privacy動作的sid變數，連結標設定如 <code style="color:#f00">&lt;a asp-controller="Home" asp-action="Index" asp-route-sid="12"&gt;傳送資料&lt;/a&gt;</code>。
+            </li>
+            <li>
+              asp-all-route-data：雖然我們可以用 <code style="color:#f00">asp-route-{對應動作代入參數名稱}</code> 傳送資料到對應的動作，可是當代入變數有許多個時，連結標籤會非常長，因此我們可以使用C#字典類型來產生參數變數，例如動作Privacy代入變數包含 <code style="color:#f00">sid、sname與stel</code>，我們可以用下列 <code style="color:#f00">asp-all-route-data</code> 方式來進行資料傳遞。
+  <pre>
+  @{
+    var t=new Dictionary&lt;string,string,string&gt;{
+      {"sid","1"},
+      {"sname","甲"},
+      {"stel","1234567"}
+    };
+  }
+  &lt;a asp-controller="Home" asp-action="Privacy" asp-all-route-data="t"&gt;傳送資料&lt;/a&gt;
+  </pre>
+            </li>
+            <li>
+              asp-route：利用選擇器(selector)設定動作路由名稱來進行路由，選擇器的設定將於後續內容說明。
+  <pre>
+  [Route("/Home/Privacy",Name="NewPrivacy"]
+  public IActionResult Privacy() {
+    ...
+  }
+  &lt;a asp-route="NewPrivacy"&gt;連結&lt;/a&gt;
+  </pre>
+            </li>
+          </ul>
+          <h4 style="color:rgb(234, 0, 255);font-size:14pt;font-weight:bold;">
+            練習：請在HomeController中Priacy動作新增3個代入變數，並利用錨點標籤協助傳遞3個變數值。
+          </h4><p></p>
+        </div>
+        <div class="px-3">
+            <h5>表單標籤協助</h5>
+            <p>
+                表單標籤 <code style="color:#f00">&lt;form&gt;</code>) 使用 <code style="color:#f00">asp-controller、asp-action</code> 標籤協助，請注意.Net Core表單當傳遞方法設為 post 時，預設會加上防偽造(anti-forgery)的權杖，使用者可以在欲執行動作前加上 <code style="color:#f00">[ValidateAntiForgeryToken]</code> 來驗證是否經過正常表單傳送，範例如下。
+            </p>
+<pre>
+[ValidateAntiForgeryToken]
+public IActionResult Privacy() {
+  ...
+}
+</pre>
+          <h4 style="color:rgb(234, 0, 255);font-size:14pt;font-weight:bold;">
+            練習：請在Index檢視頁面中新增一個表單，表單僅包含一個送出按鈕，送出後執行HomeController中Priacy動作，必須設定防偽造(anti-forgery)的權杖。
+          </h4><p></p>
+          </div>
+          <div class="px-3">
+            <h5>表單控制項-輸入(input)</h5>
+            <p>
+              表單輸入項利用標籤協助 <code style="color:#f00">asp-for</code>) 來設定表單欄位的名稱，名稱可對應於 動作代入變數或動作代入變數資料類別欄位名稱。輸入控制項依據輸入類型(type)不同對應至C#不同資料類型，如下圖：
+            </p>
+            <img src="imgs/dnet-3/taghelper-input.png" width="80%"><p></p>
+            <h4 style="color:rgb(234, 0, 255);font-size:14pt;font-weight:bold;">
+              練習：請在Index檢視頁面中新增一個表單，表單包含兩個文字方塊及一個送出按鈕，兩個文字方塊用於輸入帳號及密碼，點選送出後，將文字方塊內容以代入參數方式傳至HomeController中Priacy動作，Priacy動作帶入參數名稱分別為uname與upassword，均為字串變數。
+            </h4><p></p>
+            <h4 style="color:rgb(234, 0, 255);font-size:14pt;font-weight:bold;">
+              練習：請在Index檢視頁面中新增一個表單，表單包含先前學生資料模型中學號、姓名與電話，藉由 @model 設定資料定義與 asp-for 使用 @Model 來綁定模型中欄位，點選送出後，將學生資料物件傳至傳至HomeController中Priacy動作，並在Priacy檢視頁面顯示輸入資料。
+            </h4><p></p>
+          </div>
+          <div class="px-3">
+            <h5>表單控制項-標籤(label)</h5>
+            <p>
+              表單標籤控制項利用標籤協助 <code style="color:#f00">asp-for</code>) 來指定對應輸入控制項。
+            </p>
+          </div>
+          <div class="px-3">
+            <h5>表單控制項-下拉式方塊(select)</h5>
+            <p>
+              表單下拉式方塊控制項利用標籤協助 <code style="color:#f00">asp-for</code> 來指定對應參數或資料模型欄位，使用 <code style="color:#f00">asp-items</code> 來設定下拉式方塊選項，下拉式方塊選項必須是 <code style="color:#f00">List&lt;SelectListItem&gt;</code> 資料類型，每個 <code style="color:#f00">SelectListItem</code> 均包含下拉式方塊顯示文字(<code style="color:#f00">Text</code>)與選到值(<code style="color:#f00">Value</code>)。
+            </p>
+            <h4 style="color:rgb(234, 0, 255);font-size:14pt;font-weight:bold;">
+              練習：請在學生資料模型中新增居住縣市(city)欄位，在Index檢視頁面中新增一個表單，表單包含三個文字方塊輸入學號、姓名、電話及一個預設臺北市、臺中市、臺南市與高雄市的下拉式選單，點選送出後，將學生資料物件傳至傳至HomeController中Priacy動作，並在Priacy檢視頁面顯示輸入資料。
+            </h4><p></p>
+          </div>
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>
