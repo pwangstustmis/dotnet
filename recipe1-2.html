@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel<="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe- HTML與靜態網頁</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">網頁檔案基本架構</a>、<a href="#topic2" class="bookmark">常用HTML標籤</a>、<a href="#topic3" class="bookmark">表單HTML標籤</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">網頁檔案基本架構</h3>
+        <p class="recipecontent">
+            HTML為網頁標註語言，設計者利用各種HTML標籤建構網頁，要設計網頁，設計者必須了解各種HTML標籤(tag)及其對應屬性設定，本單元將介紹常用HTML標籤及其屬性，更多HTML標籤介紹，請參考<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTML" target="_blank">Mozilla HTML文件</a>或<a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML文件</a>。
+          </p>
+          <p class="recipecontent">
+            網頁設計是將顯示內容置於HTML標籤中，HTML標籤為 <em>&lt;標籤名稱&gt;</em>，標籤名稱一般為英文縮寫，例如標題列英文為(heading)，因此HTML的標題標籤使用 <em>&lt;h1&gt;</em> 代表大標題，其中 <em>h</em> 代表標題列，數字 <em>1</em> 代表大標題，HTML預設有六種標題標籤分別為 <em>h1</em> 到 <em>h6</em>。
+          </p>
+          <p class="recipecontent">        
+            大部分網頁設計會將顯示內容置於HTML開始標籤 <em>&lt;標籤名稱&gt;</em> 與結束標籤 <em>&lt;/標籤名稱&gt;</em>之間，也有少數標籤為單一自我結束標籤 <em>&lt;標籤名稱/&gt;</em>，下列程式片段為網頁基本架構檔案，網頁檔案均包含於網頁標籤 <em>&lt;html&gt;</em> 與 <em>&lt;/html&gt;</em> 之間，標籤<em>&lt;head&gt;</em> 區塊用於網頁宣告，其中包含詮釋資料中字元集設定(charset)、瀏覽器網頁抬頭設定(title)、JavaScript設定與樣式CSS設定等，網頁顯示內容則置於 <em>body</em> 區塊。
+          </p>
+          <p class="recipecontent">
+            HTML標籤除了標籤名稱之外，最重要的是標籤屬性(attribute)設定，HTML利用標籤指定內容所屬的標籤類別，之後利用標籤屬性來設定內容的細項，標籤屬性包含於標籤中如 <em>&lt;標籤名稱 屬性名稱="屬性值"&gt;</em>，介紹HTML標籤格式後，接下來說明常用HTML標籤。
+          </p>
+          <div class="codeblock">
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;!-- 設定utf-8編碼 --&gt;
+        &lt;meta charset="utf-8"&gt;
+
+        &lt;title&gt;瀏覽器網頁抬頭&lt;/title&gt;
+         
+        &lt;script&gt;
+            &lt;!-- 內嵌JavaScript --&gt;
+        &lt;/script&gt;
+
+        &lt;!-- 連接外部JavaScript檔案 --&gt;
+        &lt;script src='JavaScript檔案位置'&gt;&lt;/script&gt;
+          
+        &lt;style&gt;
+            &lt;!-- 內嵌CSS樣式 --&gt;
+        &lt;/style&gt;
+        &lt;!-- 連接外部CSS樣式檔 --&gt;
+        &lt;link rel='stylesheet' href='外部樣式檔位置'&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;!-- 網頁內容 --&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+          </div>
+          <div class="codeblock">
+  練習：請在ASP.Net Core Web MVC專案中 <mark>wwwroot</mark> 檔案夾中新增檔名 <mark>homepage.html</mark> 網頁檔，套用上述原始碼，同時瀏覽器網頁標題為 <mark>基礎HTML練習</mark>，網頁內容顯示 <mark>南臺資管</mark>。
+          </div>
+          
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">常用HTML標籤</h3>
+        <p class="recipecontent">
+          常用HTML標籤包含：
+          <ul>
+            <li><em>標題h(heading)</em></li>
+            <p>
+              標籤h預設用於設定標題，有六種預設大小(h1到h6)，每個標題標籤預設會佔一行，可以搭配CSS改變標題樣式。
+            </p>
+            <div class="codeblock">
+  練習：請在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔內容顯示六種標題(h1到h6)的 <mark>南臺資管</mark>。
+            </div>
+            <li><em>段落p(paragraph)</em></li>
+            <p>
+              標籤p用於設定段落內容，每個段落有預設間距，可以搭配CSS改變段落樣式。段落內跳行請使用分行&lt;br/&gt;標籤。
+            </p>
+            <div class="codeblock">
+  練習：請在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔內容顯示兩個段落，第一個段落包含「abcde」，第二個段落包含「abcde」，但是第二段第一行僅包含「ab」、第二行則包含「cde」。
+            </div>
+            <li><em>標註(mark)</em></li>
+            <p>
+              標註(mark)用於強調某些內容。
+            </p>
+            <div class="codeblock">
+  練習：請在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔內容顯示段落內容「abcde」，並利用標註(mark)強調「bc」。
+            </div>
+            <li><em>上標(sup)、下標(sub)</em></li>
+            <p>
+              用於顯示類似數學符號上標(sup)與下標(sub)。
+            </p>
+            <div class="codeblock">
+  練習：請在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔，利用上下標顯示 <mark>(x<sub>1</sub>+x<sub>2</sub>)<sup>2</sup></mark>。
+            </div>
+            <li><em>圖片(img)</em></li>
+            <p>
+              標籤img用於顯示圖片，常用屬性為 <em>src</em> 與 <em>alt</em>，<em>src</em> 用於設定圖片檔案位置，如果圖片檔位置在本機，則使用 <em>相對位址</em> 來設定圖片位置，請在 <em>wwwroot</em> 目錄下新增一目錄名稱為 <em>imgs</em>，並在目錄下放置一圖片檔，網頁檔 <em>homepage.html</em> 顯示該圖片的 <em>src</em>設定為 <em>imgs/圖片檔名</em>，如果圖片在遠端，則 <em>src</em>設定為 <em>圖片網址</em>。<em>alt</em>用於設定顯示文字，img標籤可使用 <em>width(寬)</em> 或 <em>height(高)</em> 來設定圖片大小，寬與高值可為絕對大小(實際大小或像素點)或相對大小(%)，通常建議使用樣式來進行控制。
+            </p>
+            <div class="codeblock">
+  練習：請在南臺首頁選擇任一照片，並在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔，利用<mark>img標籤</mark>並使用本地端及遠端方式顯示該照片，之後透過 <mark>寬與高(絕對與相對)</mark> 設定改變圖片顯示大小。
+            </div>
+            <li><em>超連結(a)</em></li>
+            <p>
+              標籤 <em>a</em> 用於設定超連結，常用屬性包含 <em>href</em> 與<em>target</em>，<em>href</em> 用於設定連結對象，如果連結對象為網站內的資源，請使用相對檔案位置，如果連結對象為網站外部資源，請使用絕對位置(必須指定全部網址)，<em>href</em> 值如果設為 <em>#</em> 代表空連結。<em>target</em> 用於設定連結內容顯示頁面，當設定為 <em>_blank</em> 時，瀏覽器會開啟新的頁面顯示連結內容，如不指定，則連結內容會顯示在現有的頁面。
+            </p>
+            <div class="codeblock">
+  練習：請在南臺首頁選擇任一照片，並在專案中 <mark>wwwroot</mark> 檔案夾中 <mark>homepage.html</mark> 網頁檔，利用<mark>a標籤</mark>顯示本地端圖片，利用另一<mark>a標籤</mark>顯示遠端圖片，搭配 <mark>target</mark> 屬性讓圖片顯示在現在瀏覽器頁面或是新瀏覽器頁面。
+            </div>
+            <li><em>表格(table)</em></li>
+            <p>
+              <em>table</em>標籤用於設定表格，表格包含列與欄，<em>tr</em> 標籤用於新增一列，如果表格有 5 列，就會有5個<em>tr</em> 開始與結束標籤。<br/>
+            表格每一欄使用 <em>th</em> 與 <em>td</em> 標籤，<em>th</em> 標籤通常用於設定表格標題，<em>td</em> 標籤用於設定一般儲存格，表格也提供儲存格合併功能，在 <em>th</em> 與 <em>td</em> 標籤中設定 <em>rowspan</em> 與 <em>colspan</em> 屬性來設定合併列或合併欄，下列程式片段宣告一個2列2欄表格、將2列2欄表格中第一欄的1、2列合併、將2列2欄表格中第一列的1、2欄合併。請注意：表格標籤中 <em>border</em> 用於設定邊框粗線，一般建議以CSS樣式設定。
+            </p>
+            <div class="codeblock">
+  &lt;table border='1' &gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        列1欄1
+      &lt;/td&gt;
+      &lt;td&gt;
+        列1欄2
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        列2欄1
+      &lt;/td&gt;
+      &lt;td&gt;
+        列2欄2
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;!-- 將2列2欄表格中第一欄的1、2列合併 --&gt;
+  &lt;table border='1'&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=2&gt;
+        列1欄1
+      &lt;/td&gt;
+      &lt;td&gt;
+        列1欄2
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        列2欄2
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;!-- 將2列2欄表格中第一列的1、2欄合併 --&gt;
+  &lt;table border='1'&gt;
+    &lt;tr&gt;
+      &lt;td colpan=2&gt;
+        列1欄1
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        列2欄1
+      &lt;/td&gt;
+      &lt;td&gt;
+        列2欄2
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+            </div>
+
+            <div class="codeblock">
+  練習：請利用表格及圖片設計出<a href="https://www.mcdonalds.com/tw/zh-tw/full-menu/extra-value-meals.html" target="_blank">麥當勞超值全餐</a>。
+            </div>
+            <li><em>項目(ul)、符號(ol)、項目或符號項次(li)</em></li>
+            <p>
+              標籤 <em>ul</em> 用於設定無編號項目，<em>ul</em> 標籤中每個項目使用 <em>li</em> 標籤，可搭配樣式設定不同項目樣式。標籤 <em>ol</em> 用於設定編號項目，<em>ol</em> 標籤中每個項目使用 <em>li</em> 標籤，可搭配樣式設定不同編號樣式。
+            </p>
+            <div class="codeblock">
+  &lt;ul&gt;
+    &lt;li&gt;項目1&lt;/li&gt;
+    &lt;li&gt;項目2&lt;/li&gt;
+    &lt;li&gt;項目3&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;項目1&lt;/li&gt;
+    &lt;li&gt;項目2&lt;/li&gt;
+    &lt;li&gt;項目3&lt;/li&gt;
+  &lt;/ol&gt;
+            </div>
+            <div class="codeblock">
+  練習：請利用項目及編號顯示商管學院所有系所。
+            </div>
+            <li><em>方塊區域(div、span)</em></li>
+            <p>
+              <em>div</em> 與 <em>span</em> 標籤用在網頁設定方形區域，這些方形區域可用於放置內容如圖片、文字等，功能有一點像日常生活使用的便利貼，請注意：<em>div</em> 區塊預設會跳行，也就是兩個 <em>div</em> 區域，預設不會在同一列，但是可透過 <em>CSS</em> 樣式來溪改，<em>span</em>預設在同一行，例如在同一行中要包含不同的內容樣式，可使用span。
+            </p>
+            <li><em>聲音(audio)</em></li>
+            <p>
+              <em>audio</em> 標籤用於撥放聲音檔，支援格式包含<em>MP3、WAV與OGG</em>，請注意Apple Safari瀏覽器不支援OGG格式，<em>audio</em>標籤常用屬性包含 <em>controls(用於設定顯示控制按鈕)、autoplay(用於設定自動撥放)、muted(靜音)，audio標籤會包含source標籤用於設定聲音檔來源(src)與格式(type)</em>，請注意：<em>audio</em> 標籤可以設定多種格式，audio會對音源檔由上而下檢查是否可以撥放。
+            </p>
+            <div class="codeblock">
+&lt;audio controls autoplay muted&gt;
+  &lt;source src="聲音檔1位置" type="audio/ogg"&gt;
+  &lt;source src="聲音檔2位置" type="audio/mp3"&gt;
+  瀏覽器不支援音樂撥放
+&lt;/audio&gt;
+            </div>
+            <li><em>影片(video)</em></li>
+            <p>
+              <em>video</em> 標籤用於撥放影片檔，支援格式包含MP4、WebM與OGG，請注意Apple Safari瀏覽器不支援OGG格式，<em>video</em>標籤常用屬性包含 <em>controls(用於設定顯示控制按鈕)、autoplay(用於設定自動撥放)、muted(靜音)、width(撥放器寬)、height(撥放器高)、poster(載入時顯示圖片檔)</em>，<em>video</em> 標籤會包含source標籤用於設定影片檔來源(src)與格式(type)，請注意：可以設定多種格式，video會對影片檔由上而下檢查是否可以撥放。
+            </p>
+            <div class="codeblock">
+&lt;video controls muted&gt;
+  &lt;source src="影片檔1位置" type="video/ogg"&gt;
+  &lt;source src="影片檔2位置" type="video/mp4"&gt;
+  瀏覽器不支援影片撥放
+&lt;/video&gt;
+            </div>       
+          </ul>
+        </p>    
+      </div>
+      <div id="topic3">
+        <h3 class="recipetitle">表單HTML標籤</h3>
+        <p class="recipecontent">
+          表單最常為商業網頁使用，表單控制項標籤需包含於<em>form</em>標籤內，<em>form</em> 標籤常用屬性包含<em>action、method與enctype</em>，<em>action</em> 屬性用於指定後端表單資料處理檔案，如未指定action則表單將傳送給自己，<em>method</em> 屬性包含<em>get與post</em>值，當<em>method</em> 屬性為 <em>get</em> 時，表單資料會透過網址列變數名稱與值的方式進行傳送，傳送長度約3000字大小，當<em>method</em> 屬性為 <em>post</em>時，表單資料會儲存於HTTP request內容中進行傳送，沒有長度限制。<em>enctype</em>屬性限用於method屬性值為post，用於設定表單資料編碼方式，一般為 <em>application/x-www-form-urlencoded</em> 或 <em>multipart/form-data</em>，前者為預設編碼方式，而後者用於上載檔案。
+        </p>
+        <div class="codeblock">
+  &lt;form method="get"&gt;
+
+  &lt;/form&gt;
+  &lt;form method="post"&gt;
+
+  &lt;/form&gt;
+        </div>
+        <p class="recipecontent">
+          常用表單控制項包含 <em>輸入(input)、文字區域(textarea)、下拉式選單(select)</em> 等，以下針對常用表單控制項進行說明。
+          <ul>
+            <li><em>輸入(input)</em></li>
+            <p>
+              表單輸入標籤 <em>input</em> 是表單中使用最為頻繁的標籤，用於資料輸入，透過屬性 <em>type </em>屬性設定 <em>text(文字)、button(按鈕)、color(顏色選取)、date(日期選取)、datetime-local(日期及時間選擇)、email(電子郵件輸入)、file(檔案選擇)、hidden(隱藏表單欄位)、image(圖片按鈕)、month(月份選擇)、number(數字選擇器)、password(密碼輸入)、range(範圍選擇器)、submit(送出按鈕)、tel(電話號碼)、time(時間選擇器)、week(月份選擇器)</em>。屬性依據不同類型而有所不同，請參考<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">MDN Wen Docs Input element</a>，如果<em>input</em> 標籤為一定要輸入控制項，則<em>input</em> 標籤須包含屬性 <em>required</em> ，要傳送給後端程式表單程式，欄位控制項請一定要設定 <em>name</em> 屬性，用於後端程式取得個別欄位，<em>input</em> 標籤一般會搭配 <em>label</em> 標籤用於設定欄位標籤文字。
+            </p>
+            <div class="codeblock">
+  &lt;form&gt;
+    &lt;label for="f1"&gt;text類型&lt;/label&gt;
+    &lt;input type="text" id="f1"&gt;&lt;p&gt;&lt;/p&gt;
+    &lt;input type="submit" value="送出"&gt;
+  &lt;/form&gt;
+            </div>
+            <div class="codeblock">
+  練習：請利用上述原始碼練習各種不同輸入(input)標籤類型。
+            </div>
+            <li><em>文字區域(textarea)</em></li>
+            <p>
+              <em>textarea</em>標籤用於設定多行文字輸入，屬性包含 <em>rows</em>(指定列數) 與 <em>cols</em>(指定每列字數)。
+            </p>
+            <div class="codeblock">
+  &lt;form&gt;
+    &lt;textarea cols="40" rows="5"&gt;&lt;/textarea&gt;
+  &lt;/form&gt;
+            </div>
+            <li><em>下拉式方塊(select)</em></li>
+            <p>
+              <em>select</em>標籤用於設定下拉式方塊選項，每個選項使用<em>option標籤</em>。
+            </p>
+            <div class="codeblock">
+  &lt;form&gt;
+    &lt;label for="e1"&gt;教育程度&lt;/label&gt;
+    &lt;select id="e1"&gt;
+      &lt;option value="1"&gt;高中(含)以下&lt;/option&gt;
+      &lt;option value="2"&gt;大專&lt;/option&gt;
+      &lt;option value="3"&gt;研究所以上&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/form&gt;
+            </div>
+          </ul>
+        </p>
+
+      </div>
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
