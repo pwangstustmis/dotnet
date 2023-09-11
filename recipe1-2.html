@@ -224,32 +224,32 @@
       <div id="topic3">
         <h3 class="recipetitle">表單HTML標籤</h3>
         <p class="recipecontent">
-          表單最常為商業網頁使用，表單控制項標籤需包含於<em>form</em>標籤內，<em>form</em> 標籤常用屬性包含<em>action、method與enctype</em>，<em>action</em> 屬性用於指定後端表單資料處理檔案，如未指定action則表單將傳送給自己，<em>method</em> 屬性包含<em>get與post</em>值，當<em>method</em> 屬性為 <em>get</em> 時，表單資料會透過網址列變數名稱與值的方式進行傳送，傳送長度約3000字大小，當<em>method</em> 屬性為 <em>post</em>時，表單資料會儲存於HTTP request內容中進行傳送，沒有長度限制。<em>enctype</em>屬性限用於method屬性值為post，用於設定表單資料編碼方式，一般為 <em>application/x-www-form-urlencoded</em> 或 <em>multipart/form-data</em>，前者為預設編碼方式，而後者用於上載檔案。
+          當使用者想要傳送資料至後端伺服器，表單是最常用的方式，表單控制項標籤需包含於<em>form</em>標籤內，<em>form</em> 標籤常用屬性包含<em>action、method與enctype</em>，<em>action</em> 屬性用於指定伺服器端表單資料處理程式，如未指定action則表單將傳送給自己，<em>method</em> 屬性一般使用<em>get與post</em>值，當<em>method</em> 屬性設為 <em>get</em> 時，表單資料會透過網址列變數名稱與值的方式進行傳送，傳送長度約3000字大小，當<em>method</em> 屬性設為 <em>post</em>時，表單資料會儲存於HTTP request內容中進行傳送，沒有長度限制。<em>enctype</em>屬性限用於method屬性值為<em>post</em>，用於設定傳送表單時表單資料編碼方式，一般為 <em>application/x-www-form-urlencoded</em> 為預設編碼方式，資料傳送會先進行編碼，空白用<em>+</em>取代，其他字元轉為16進位<em>ASCII</em>字元，<em>multipart/form-data</em> 用於上載檔案，傳送方式必須使用<em>post</em>。
         </p>
         <div class="codeblock">
-  &lt;form method="get"&gt;
+  &lt;form method="get" action="後端程式位置"&gt;
 
   &lt;/form&gt;
-  &lt;form method="post"&gt;
+  &lt;form method="post" action="後端程式位置"&gt;
 
   &lt;/form&gt;
         </div>
         <p class="recipecontent">
-          常用表單控制項包含 <em>輸入(input)、文字區域(textarea)、下拉式選單(select)</em> 等，以下針對常用表單控制項進行說明。
+          常用表單控制項包含 <em>輸入(input)、文字區域(textarea)、下拉式選單(select)、fieldset(群組包欄位)</em> 等，以下針對常用表單控制項進行說明。
           <ul>
             <li><em>輸入(input)</em></li>
             <p>
-              表單輸入標籤 <em>input</em> 是表單中使用最為頻繁的標籤，用於資料輸入，透過屬性 <em>type </em>屬性設定 <em>text(文字)、button(按鈕)、color(顏色選取)、date(日期選取)、datetime-local(日期及時間選擇)、email(電子郵件輸入)、file(檔案選擇)、hidden(隱藏表單欄位)、image(圖片按鈕)、month(月份選擇)、number(數字選擇器)、password(密碼輸入)、range(範圍選擇器)、submit(送出按鈕)、tel(電話號碼)、time(時間選擇器)、week(月份選擇器)</em>。屬性依據不同類型而有所不同，請參考<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">MDN Wen Docs Input element</a>，如果<em>input</em> 標籤為一定要輸入控制項，則<em>input</em> 標籤須包含屬性 <em>required</em> ，要傳送給後端程式表單程式，欄位控制項請一定要設定 <em>name</em> 屬性，用於後端程式取得個別欄位，<em>input</em> 標籤一般會搭配 <em>label</em> 標籤用於設定欄位標籤文字。
+              表單輸入標籤 <em>input</em> 是表單中使用最為頻繁的標籤，用於資料輸入，常用屬性包含 <em>type、value、name、placeholder</em>， <em>type </em>屬性用於設定不同輸入類型包含： <em>text(文字)、button(按鈕)、checkbox(核取方塊)、color(顏色選取)、date(日期選取)、datetime-local(日期及時間選擇)、email(電子郵件輸入)、file(檔案選擇)、hidden(隱藏表單欄位)、image(圖片按鈕)、month(月份選擇)、number(數字選擇器)、password(密碼輸入)、radio(選項按鈕)、range(範圍選擇器)、submit(送出按鈕)、tel(電話號碼)、time(時間選擇器)、week(月份選擇器)</em>。<em>submit(送出按鈕)</em> 類型用於傳送表單，預設以<em>按鈕</em>方式顯示，按鈕文字請設定於 <em>value</em>屬性，詳細屬性設定請參考<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input" target="_blank">MDN Wen Docs Input element</a>，如果<em>input</em> 標籤為必須輸入控制項，則<em>input</em> 標籤須包含屬性 <em>required</em> ，要將控制項資料傳送給後端程式，欄位控制項一定要設定 <em>name</em> 屬性，用於後端程式取得對應欄位，<em>input</em> 標籤一般會搭配 <em>label</em> 標籤用於設定該欄位標籤文字，要使用<em>label</em> 標籤，控制項請設定 <em>id</em> 屬性值，<em>label</em> 標籤使用 <em>for</em> 屬性指定該名稱控制項。
             </p>
             <div class="codeblock">
   &lt;form&gt;
-    &lt;label for="f1"&gt;text類型&lt;/label&gt;
+    &lt;label for="f1"&gt;文字方塊f1名稱&lt;/label&gt;
     &lt;input type="text" id="f1"&gt;&lt;p&gt;&lt;/p&gt;
     &lt;input type="submit" value="送出"&gt;
   &lt;/form&gt;
             </div>
             <div class="codeblock">
-  練習：請利用上述原始碼練習各種不同輸入(input)標籤類型。
+  練習：請利用上述原始碼練習各種不同輸入(input)標籤類型包含： text(文字)、checkbox(核取方塊)、date(日期選取)、email(電子郵件輸入)、file(檔案選擇)、hidden(隱藏表單欄位)、password(密碼輸入)、radio(選項按鈕)、range(範圍選擇器)、submit(送出按鈕)。
             </div>
             <li><em>文字區域(textarea)</em></li>
             <p>
@@ -274,9 +274,39 @@
     &lt;/select&gt;
   &lt;/form&gt;
             </div>
+            <li><em>群組表單欄位(fieldset)</em></li>
+            <p>
+              <em>fieldset</em>標籤用於群組標單欄位，使用 <em>legend</em>標籤設定每個群組標題。
+            </p>
+            <div class="codeblock">
+  &lt;form&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;教育選項&lt;/legend&gt;
+      &lt;label for="e1"&gt;教育程度&lt;/label&gt;
+      &lt;select id="e1"&gt;
+        &lt;option value="1"&gt;高中(含)以下&lt;/option&gt;
+        &lt;option value="2"&gt;大專&lt;/option&gt;
+        &lt;option value="3"&gt;研究所以上&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;收入選項&lt;/legend&gt;
+      &lt;label for="e2"&gt;收入範圍&lt;/label&gt;
+      &lt;select id="e2"&gt;
+        &lt;option value="1"&gt;40,000&lt;/option&gt;
+        &lt;option value="2"&gt;40,001~60,000&lt;/option&gt;
+        &lt;option value="3"&gt;60,001以上&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+            </div>
           </ul>
         </p>
-
+        <div class="codeblock">
+  綜合練習：請利用本單元的內容設計如下圖網頁。
+        </div>
+        <img src="imgs/recipe1-2/exerp1.png" width="60%"><p></p>
+        <img src="imgs/recipe1-2/exerp2.png" width="60%">
       </div>
     </div>
     <a class="btn btn-primary topbtn" href="#top">最上頁</a>
