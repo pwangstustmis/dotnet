@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel<="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 3：CSS與網頁樣式</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">CSS設定方式</a>、<a href="#topic2" class="bookmark">常用CSS屬性</a>、<a href="#topic3" class="bookmark">CSS設定對象</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">CSS設定方式</h3>
+        <p class="recipecontent">
+          介紹常用HTML標簽後，如果使用者希望網頁能自訂版面規劃如字型、顏色、位置等，因此導入CSS(Cascading Style Sheet)，學習CSS除了必須了解CSS屬性意義及其設定方式，更重要的是樣式的套用對象(selector)，除此之外，CSS具傳遞性質，也就是說，對某一對象設定樣式時，所有包含於這個對象中的內容，預設就會套用該對象樣式。本單元僅介紹常用CSS屬性，詳細的介紹，請參考<a href="https://www.w3schools.com/css/" target="_blank">W3Schools CSS</a>。
+          </p>
+          <p class="recipecontent">
+            CSS設定方式有3種：<em>行內(inline)、內部(internal)與external(外部)</em>三種方式。<em>行內(inline)</em>是在HTML標籤加入<em>style屬性</em>，<em>style屬性</em>包含樣式屬性如 <em>屬性:樣式值;</em>，樣式設定可包含多個屬性。<em>內部(internal)</em>設定是將樣式定義於HTML檔檔頭<em>(head)</em>位置，並將樣式設定於<em>檔頭</em>位置中<em>style標籤</em>中，設定方式為 <em>設定對象 {屬性:樣式值;}</em>，設定可包含多個屬性。<em>external(外部)</em>是將樣式設定存於副檔名為 <em>.css</em> 的獨立檔案，並在網頁<em>檔頭(head)</em>位置內利用HTML <em>link標籤</em>連結外部樣式檔。下列程式碼分別以行內(inline)、內部(internal)與external(外部)三種方式來定義<em>對象為段落(p)、紅色、大小12pt</em>。</p>
+          <div class="codeblock">
+  &lt;!-- 行內(inline)CSS設定 --&gt;
+  &lt;p style="color:#f00;font-size:12pt;"&gt;段落紅色字、大小12pt&lt;/p&gt;
+          </div>
+          <div class="codeblock">
+  &lt;!-- 內部(internal)CSS設定 --&gt;
+  &lt;head&gt;
+    &lt;style&gt;
+    p {
+      color:#f00;
+      font-size:12pt;
+    }
+    &lt;/style&gt;
+  &lt;/head&gt;
+          </div>
+          <div class="codeblock">
+  外部(external)CSS設定：將內部設定中段落p樣式存於外部檔案，例如style.css
+  在網頁檔頭位置加入下列命令
+  &lt;link rel="stylesheet" href="style.css"&gt;
+          </div>          
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">常用CSS屬性</h3>
+        <p class="recipecontent">
+          常用CSS屬性包含<em>顏色(color)</em>、<em>字型(font)</em>、<em>邊界(margin)與內距(padding)</em>、<em>邊框(border)</em>、<em>寬(width)與高(height)</em>。
+          <ul>
+            <li><em>顏色(color)</em></li>
+            <p>
+              CSS顏色設定包含前景(字)與背景。前景顏色屬性為 <em>color</em>，顏色值設定可以使用： <em>color:#紅綠藍;</em> 其中紅綠藍分別代表紅色、綠色與藍色，設定值用16進位制(00~ff)、或是利用 <em>color:rgb(紅,綠,藍);</em>、 <em>color:rgba(紅,綠,藍,透明度);</em> 來設定，<em>rgb(紅,綠,藍) </em> 各個顏色設定值為0到255，<em>rgba</em>中<em>a</em>代表透明度，設定值為0到1，0代表透明(完全看不到)，1代表完全不透明(完全看得到)。
+            </p>
+            <p>  
+              背景設定包含背景顏色 <em>background-color</em>、背景圖片 <em>background-image</em>、圖片重複方式 <em>background-repeat</em>、背景黏貼方式 <em>background-attachment</em>、背景位置 <em>background-position</em>，而 <em>background</em> 屬性是用於整合先前個別背景屬性。
+            </p>
+            <p>
+              背景顏色屬性 <em>background-color</em> 同前景顏色<em>color</em>設定，背景圖片 <em>background-image</em> 設定方式為<em>url("圖片檔案位置")</em> ，圖片重複方式<em>background-repeat</em>預設為水平與垂直重複，使用者可以設定僅水平重複(<em>repeat-x</em>)、僅垂直重複(<em>repeat-y</em>)或不重複(<em>no-repeat</em>)。背景黏貼方式 <em>background-attachment</em>設定包含固定(<em>fixed</em>)與捲動(<em>scroll</em>)，設為固定則背景圖不會隨著視窗捲動而改變位置，捲動則背景圖會隨著視窗捲動而改變位置。背景位置 <em>background-position</em> 常用值包含左上(<em>left top</em>)、左中(<em>left center</em>)、左下(<em>left bottom</em>)、中上(<em>center top</em>)、中中(<em>center center</em>)、中下(<em>center bottom</em>)、右上(<em>right top</code>)、右中(<em>right center</code>)、右下(<em>right bottom</em>)。<em>background</em> 屬性則是把先前屬性設定以一行表示。
+            </p>
+            <div class="codeblock">
+  練習：請使用下列網頁原始碼，第一段顏色設為綠色、第一個div方塊背景顏色設為透明度為0.2的藍色，第二個div方塊利用圖片。請選擇一張圖片並將網頁正中央設定固定單一背景圖片。
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;p&gt;南臺科技大學&lt;/p&gt;
+      &lt;div style="width:200px;height:200px;"&gt;&lt;/div&gt;
+      &lt;div style="width:600px;height:600px;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+            </div>
+            <li><em>CSS屬性-字型(font)</em></li>
+            <p>
+              CSS字型常用屬性包含字型(<em>font-family</em>)、大小(<em>font-size</em>)、字樣式(<em>font-style</em>)與字粗細(<em>font-weight</em>)。常用字型大小(<em>font-size</em>)以像素點(<em>px</em>)、點(<em>pt</em>)、<em>em</em>約16px大小及<em>vw</em>代表現在視窗寬度值為0到100，其中vm會隨著視窗大小改變字體大小。常用字型樣式(<em>font-style</em>)包含正常(<em>normal</em>)或斜體(<em>italic</em>)。常用字型粗細(<em>font-weight</em>)值從100到900，<em>400</em> 為正常字體粗細，<em>700</em> 為粗體字粗細，使用者可自行設定粗細值。
+            </p>
+            <p>字型(<em>font-family</em>)用於設定為 <em>font-family:字型</em> ，預設字型包含 <em>Sans-serif、Arial、Verdana、Helvetica、Tahoma、"Trebuchet MS"、"Times New Roman"、Georgia、Garamond、"Courier New"與"Brush Script MT"</em>。設定方式為 <em>font-family: 字型名稱</em>，多個字型則以逗點隔開，請注意字型設定在最後一般會包含<em>Sans-serif</em>，目的是為確保當先前字型無法在入時，瀏覽器可以用預設字型顯示。除了預設字型外，使用者也可以載入外部字型，以<a href="https://developers.google.com/fonts/docs/getting_started" target="_blank">Google Fonts</a>為例，載入方式如下：</p>
+            <p>
+            在網頁擋頭位置加入 <em>&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google字型名稱"&gt;</em>後，接下來在字型(<em>font-family</em>)中套用該Google字型名稱即可。使用者可參閱<a href="https://fonts.google.com/" target="_blank">Ggoole字型</a>。
+            </p>
+            <p>
+              字型設定除上述遠端設定外，也可以透過<em>@font-face</em>設定
+            </p>
+            <div class="codeblock">
+  @font-face {
+    font-family:字型名稱;
+    src:url(字型檔位置);
+  }
+            </div>
+            <div class="codeblock">
+  練習：請設計網頁包含兩段文字，第一段以遠端字型顯示，第二段以本地端字型顯示。字型檔可至<mark>Google Font</mark>下載。
+            </div>
+            <li><em>CSS屬性-邊界(margin)與內距(padding)</em></li>
+            <p>
+              CSS字型邊界(<em>margin</em>)用於設定標籤與標籤之間的距離包含上(<em>margin-top</em>)、下(<em>margin-bottom</em>)、左(<em>margin-left</em>)、右(<em>margin-right</em>)，如果要同時設定4邊邊界可以用 <em>margin</em> 來進行設定。內距(<em>padding</em>)用於設定標籤內容上下左右的間距包含上(<em>padding-top</em>)、下(<em>padding-bottom</em>)、左(<em>padding-left</em>)、右(<em>padding-right</em>)，如果要同時設定4邊內距可以用 <em>padding</em> 來進行設定。邊界與內距值可以是正負值，間距大小設定同字型大小。
+            </p>
+            <div class="codeblock">
+  練習：請利用邊界增加或減少兩個段落之間的間距。
+            </div>
+            <li><em>CSS屬性-邊框(border)</em></li>
+            <p>
+              CSS字型邊框(<em>border</em>)用於設定邊框，設定方式為 <em>邊框屬性: 邊框粗細 邊框顏色 邊框樣式</em> ，粗細設定與自性大小設定相同，邊框顏色與顏色設定相同，邊框樣式包含圓點(<em>dotted</em>)、虛線(<em>dashed</em>)、實線(<em>solid</em>)與雙線(<em>double</em>)，邊框屬性包含上(<em>border-top</em>)、下(<em>border-bottom</em>)、左(<em>border-left</em>)、右(<em>border-right</em>)，如果要同時設定4邊邊框可以用 <em>border</em> 來進行設定。圓角邊框會搭配<em>border-radius</em>屬性設定4個角的半徑值大小。
+            </p>
+            <div class="codeblock">
+  練習：網頁包含三個<mark>div</mark>方塊，請將第一個div方框設綠色、兩個像素點、實線邊框，第二個div方框設紅色、兩個像素點、30像素點圓角邊框，第三個div方框設黃色、兩個像素點、圓形邊框。
+            </div>
+            <li><em>CSS屬性-對齊</em></li>
+            <p>
+              CSS字型對齊涵蓋許多屬性包含邊界(<em>margin</em>)、文字對齊(<em>text-align</em>)、位置(<em>position</em>)、浮動(<em>float</em>)、彈性方塊(<em>flexbox</em>)等可用於設定對齊方式。
+            </p>     
+          </ul>
+        </p>    
+      </div>
+      <div id="topic3">
+        <h3 class="recipetitle">CSS設定對象</h3>
+        <p class="recipecontent">
+          CSS樣式設定如同先前HTML標籤，使用者必須了解各個CSS樣式屬性設定方式，了解常用CSS屬性之後，使用者學習如何將這些設定套用至設定對象，對象設定包<a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">簡單(simple)</a>、<a href="https://www.w3schools.com/css/css_combinators.asp" target="_blank">混合(combinator)</a>、<a href="https://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank">虛擬類別(pseudo classes)</a>與<a href="https://www.w3schools.com/css/css_attribute_selectors.asp" target="_blank">屬性選擇(attribute selector)</a>四大類，這裡僅對每一類常用項目作介紹，其他設定請參考連結網頁。
+        </p>
+        <ul>
+          <li>
+            <em>簡單對象(simple)</em>
+          </li>
+          <p>
+            簡單對象包含HTML標籤名稱、id名稱、自訂類別、全部對象與多個對象。
+            <ol>
+              <li>HTML標籤名稱會將樣式套用於網頁所有設定對象標籤，例如在CSS語法中段落標籤p設定。</li>
+            <li>網頁標籤可以設定不重複id屬性，id屬性用於識別各個標籤，CSS設定id屬性對象必須搭配 <em>#</em> 來標示指定id標籤。</li>
+            <li>自訂類別為了讓樣式設定更具彈性，使用者在HTML標籤透過屬性 <em>class</em> 即可套用樣式。</li>
+            <li>全部對象使用 <em>*</em> 代表網頁全部標籤屬。</li>
+            <li>多個對象使用 <em>,</em> 來隔開多個選擇對象。以下範例均以內部(internal)CSS設定表示。</li>
+            </ol>
+          </p>
+        </ul>
+        <div class="codeblock">
+  &lt;!--HTML標籤名稱CSS設定--&gt;
+  &lt;head&gt;
+  &lt;style&gt;
+    p {
+      color:#f00;
+      font-size:12pt;
+    }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  ...
+  &lt;p&gt;段落紅色字體、大小12pt&lt;/p&gt;
+
+  &lt;!--id屬性CSS設定--&gt;
+  &lt;head&gt;
+  &lt;style&gt;
+    #pr12 {
+      color:#f00;
+      font-size:12pt;
+    }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  ...
+  &lt;p id="pr12"&gt;段落紅色字體、大小12pt&lt;/p&gt;
+
+  &lt;!--自訂類別CSS設定--&gt;
+  &lt;head&gt;
+  &lt;style&gt;
+    .pr12 {
+      color:#f00;
+      font-size:12pt;
+    }
+  &lt;/style&gt;
+  &lt;/head&gt;
+  ...
+  &lt;p class="pr12"&gt;段落紅色字體、大小12pt&lt;/p&gt;
+
+  &lt;!--全部對象CSS設定--&gt;
+    &lt;head&gt;
+    &lt;style&gt;
+      * {
+        color:#f00;
+        font-size:12pt;
+      }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    ...
+    &lt;p&gt;段落紅色字體、大小12pt&lt;/p&gt;
+
+    &lt;!--多個對象CSS設定--&gt;
+    &lt;head&gt;
+    &lt;style&gt;
+      p,h1 {
+        color:#f00;
+        font-size:12pt;
+      }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    ...
+    &lt;p&gt;段落紅色字體、大小12pt&lt;/p&gt;
+    &lt;h1&gt;段落紅色字體、大小12pt&lt;/h1&gt;
+        </div>
+        
+    </div>        
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
