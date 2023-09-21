@@ -108,14 +108,28 @@
             <li><em>CSS屬性-對齊</em></li>
             <p class="recipecontent">
               CSS字型對齊涵蓋許多屬性包含邊界(<em>margin</em>)、文字對齊(<em>text-align</em>)、位置(<em>position</em>)、浮動(<em>float</em>)、彈性方塊(<em>flexbox</em>)等可用於設定對齊方式。
-            </p>     
+            </p>
+            <p class="recipecontent">
+              藉由設定邊界值左右為auto來對標籤行水平對齊，一定要設width屬性否則無法對齊，同時width值不可為100%。
+            </p>
+            <div class="codeblock">
+  練習：請將「南臺科技大學」至於<mark>div</mark>標籤中，並利用樣式<mark>margin</mark>設定置中
+            </div>
+            <p class="recipecontent">
+              藉由設定文字對齊 <em>text-align</em> 設定靠左(<em>left</>)、置中(<em>center</em>)、靠右(<em>right</em>)、左右對齊(<em>justify</em>)。
+            </p>
+            <li><em>CSS屬性-寬與高</em></li>
+            <p class="recipecontent">
+              CSS寬(<em>width</em>)用於設定寬度，常用寬度大小包含像素點(px)、相對父容器大小(%)與視窗寬度(vw, 1vw代表1%視窗寬度)，請注意設定視窗寬度距響應(responsive)效果。高度設定同寬度。
+            </p>
+
           </ul>
         </p>    
       </div>
       <div id="topic3">
         <h3 class="recipetitle">CSS設定對象</h3>
         <p class="recipecontent">
-          CSS樣式設定如同先前HTML標籤，使用者必須了解各個CSS樣式屬性設定方式，了解常用CSS屬性之後，使用者學習如何將這些設定套用至設定對象，對象設定包<a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">簡單(simple)</a>、<a href="https://www.w3schools.com/css/css_combinators.asp" target="_blank">混合(combinator)</a>、<a href="https://www.w3schools.com/css/css_pseudo_classes.asp" target="_blank">虛擬類別(pseudo classes)</a>與<a href="https://www.w3schools.com/css/css_attribute_selectors.asp" target="_blank">屬性選擇(attribute selector)</a>四大類，這裡僅對每一類常用項目作介紹，其他設定請參考連結網頁。
+          藉由設定位置 <em>position</em> 值絕對(<em>absolute</em>)，並搭配與上距離(<em>top</em>)、與下距離(<em>bottom</em>)、與左距離(<em>left</em>)、與右距離(<em>right</em>)。請注意位置值為 <em>absolute</em> 是相對於包覆這個absolute的對象，因此一般位置值為 <em>absolute</em> 對象會包覆於位置值為 <em>relative</em> 中。
         </p>
         <ul>
           <li>
