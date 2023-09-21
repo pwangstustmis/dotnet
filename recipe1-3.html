@@ -135,7 +135,7 @@
           <li>
             <em>簡單對象(simple)</em>
           </li>
-          <p>
+          <p class="recipecontent">
             簡單對象包含HTML標籤名稱、id名稱、自訂類別、全部對象與多個對象。
             <ol>
               <li>HTML標籤名稱會將樣式套用於網頁所有設定對象標籤，例如在CSS語法中段落標籤p設定。</li>
@@ -145,7 +145,7 @@
             <li>多個對象使用 <em>,</em> 來隔開多個選擇對象。以下範例均以內部(internal)CSS設定表示。</li>
             </ol>
           </p>
-        </ul>
+        
         <div class="codeblock">
   &lt;!--HTML標籤名稱CSS設定--&gt;
   &lt;head&gt;
@@ -208,7 +208,50 @@
     &lt;p&gt;段落紅色字體、大小12pt&lt;/p&gt;
     &lt;h1&gt;段落紅色字體、大小12pt&lt;/h1&gt;
         </div>
-        
+        <li>
+          <em>設定對象-混合對象</em>
+        </li>
+        <p class="recipecontent">
+          混合對象藉由空白、&gt;、+與~來設定樣式套用的關係。
+          <ol>
+            <li>
+              <em>對象1 對象2</em> 對象1空白對象2，代表所有包含於對象1的對象2套用該樣式。
+            </li>
+            <li>
+              <em>對象1 &gt; 對象2</em> 當對象2為對象1小孩時套用該樣式。
+            </li>
+            <li>
+              <em>對象1 + 對象2</em> 對象2為對象1立即相鄰的兄弟套用該樣式。
+            </li>
+            <li>
+              <em>對象1 ~ 對象2</em> 對象2為對象1之後的兄弟套用該樣式。
+            </li>
+          </ol>
+        </p>
+        <li>
+          <em>設定對象-虛擬類別</em>
+        </li>
+        <p class="recipecontent">
+          虛擬類別用於定義當類別處於某些狀態時套用的CSS樣式，使用方式為 <em>類別名稱:虛擬類別</em> ，常用虛擬類別包含：</p>
+          <ul style="color:rgb(20, 113, 220)">
+            <li><em>active</em> 用於設定點選時CSS類別類別。</li>
+            <li><em>checked</em> 用於設定核取時CSS類別類別。</li>
+            <li><em>focus</em> 用於設定文字方塊點選時CSS類別類別。</li>
+            <li><em>hover</em> 用於設定滑鼠移上時CSS類別類別。</li>
+            <li><em>link</em> 用於設定連結標籤a未曾拜訪過CSS類別類別。</li>
+            <li><em>visited</em> 用於設定連結標籤a拜訪過點選時CSS類別類別。</li>
+          </ul>
+        </p>
+        <li>
+          <em>設定對象-屬性選擇</em>
+        </li>
+        <p class="recipecontent">
+          屬性選擇更具彈性的對性選擇方式，這裡僅介紹最常用的兩種使用方式為 <em>標籤名稱類[屬性名稱]="屬性值"</em> 或 <em>標籤名稱類[屬性名稱]~="屬性值"</em>，其他屬性選擇設定請參考課程最上方連結位置。<em>標籤名稱類[屬性名稱]="屬性值"</em> 用於設定標籤屬性等於設定屬性值，<em>標籤名稱類[屬性名稱]~="屬性值"</em> 用於設定標籤屬性有設定屬性值。
+        </p>
+
+
+
+        </ul>
     </div>        
     </div>
     <a class="btn btn-primary topbtn" href="#top">最上頁</a>
