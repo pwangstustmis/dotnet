@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 4：前端動態網頁Javascript</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">Javascript簡介</a>、<a href="#topic2" class="bookmark">MVC專案Javascript設定</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">Javascript簡介</h3>
+        <p class="recipecontent">
+            JavaScript大概是全使用最為普遍語言，最常用於前端網頁控制包含事件偵測、動態網頁設定、非同步傳輸(fetch API)與JSON處理。這裡只簡單介紹如何使用與後端網頁相關的JavaScipt內容，詳細的介紹，請參考<a href="https://www.w3schools.com/js/default.asp" target="_blank">W3Schools JavaScript</a>。
+          </p>
+          <p class="recipecontent">
+            JavaScript設定包含行內(inline)、內部(internal)與external(外部)三種定義方式。行內(inline)是指將程式命令設定於HTML標籤事件(onclick、onload、onchange、onmouseover、onmouseout、onkeydown)屬性中，更多事件敘述請參考<a href="https://www.w3schools.com/jsref/dom_obj_event.asp" target="_blank">HTML DOM Events</a>。設定方式為 <em>事件名稱="JavaScript程式命令"</em> ，設定可包含多個JavaScipr命令。由於在行內輸入多行非常不方便，因此設計者可使用內部(internal)是將JavaScript程式定義於HTML檔檔頭(head)位置內，並包含於HTML script標籤中，設定方式為 <em>&lt;script&gt; JavaScript程式或自訂函數&lt;/script&gt;</em> 。external(外部)是將JavaScript程式存於副檔名為 .js 的獨立檔案，並在網頁檔頭(head)位置內利用HTML script標籤載入對應的樣式檔。接下來以行內(inline)、內部(internal)與external(外部)三種定義方式來設定按鈕點選時跳出警告視窗。</p>
+          <div class="codeblock">
+    <button onclick="alert('Hello');">點選跳出Hello</button>
+          </div>        
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">MVC專案Javascript設定</h3>
+        <p class="recipecontent">
+            在<em>MVC</em>專案中使用<em>Javascript</em>請使用下列方式：
+            <ul>
+                <li>
+                    請將<em>Javascript</em>函數加入 <em>wwwroot/js/site.js</em> 檔案中
+                </li>
+                <li>
+                    請在專案目錄 <em>Views/Shared/_Layout.cshtml</em> 檔案最下方加入下列命令：
+                </li>
+                <div class="codeblock">
+    @RenderSection("自訂區塊名稱",required:false)
+                </div>
+                <p class="recipecontent">
+                    在對應檢視畫面檔(例如：<em>Views/Home/index.cshtml</em>)加入下列命令
+                </p>
+                <div class="codeblock">
+    @section 自訂區塊名稱{
+        &lt;script&gt;
+            Javascript函數
+        &lt;/script&gt;
+    }
+                </div>
+            </ul>
+            
+        </p>
+      </div>
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
