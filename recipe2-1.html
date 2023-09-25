@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 1：MVC架構介紹</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">MVC專案</a>、<a href="#topic2" class="bookmark">控制器(Controllers)</a>、<a href="#topic3" class="bookmark">檢視(Views)</a>、<a href="#topic4" class="bookmark">模型(Models)</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">MVC專案</h3>
+        <p class="recipecontent">
+            <em>模型(Model)、檢視(View)、控制器(Controller)</em>專案架構會將應用程式分成三個主要的元件群組：模型、檢視與控制器。這種架構有助於達成程式關注分離，設計者開發時，僅需專注於現在群組：<em>檢視專注於使用者介面處理、控制器專注於輸入邏輯處理、模型則專注於商務資料邏輯處理</em>。MVC架構可建立比傳統整合型應用程式更可測試且更易於更新的應用程式。MVC 架構的應用程式包含：
+            <ul>
+                <li>
+                    模型(Model)：代表應用程式資料的類別。模型類別使用驗證邏輯執行商務資料規則。通常模型物件會用於資料庫中擷取並儲存模型狀態。
+                </li>
+                <li>
+                    檢視(View)：檢視包含顯示應用程式之使用者介面。 一般而言，他會用於顯示模型資料。
+                </li>
+                <li>
+                    控制器(Controller)為程式類別用於處理瀏覽器要求、取出模型資料與呼叫回傳的檢視元件。
+                </li>
+            </ul>
+          </p>
+          <p class="recipecontent">
+            <img src="imgs/recipe2-1/pic1.png" width="30%">
+          </p>
+          <p class="recipecontent">
+            要開發MVC專案，首先我們必須了解專案中檔案夾資料夾的意義及目的：
+            <ul>
+                <li><em>Connected Services</em>：用於串接後端HTTP API服務。</li>
+            <li><em>Properties檔案夾</em>：裡面包含launchSettings.json檔用於描述專案如何啟動，其中包含網頁伺服器(IIS)設定、瀏覽器是否開啟及環境變數等。</li>
+            <li><em>wwwroot檔案夾</em>：用於儲存靜態資源如靜態網頁(.html)、CSS程式庫、JavaScript程式庫、字型、圖片、影片、聲音等，<em>請注意：預設將靜態資源置於wwwroot檔案夾之外是無法被取得</em>。</li>
+            <li><em>Controllers、Models、Views檔案夾</em>：用於儲存專案中控制器、模型與檢視，<em>請注意：每新增一個控制器，專案會自動在檢視中新增對應控制器名稱的檢視資料夾</em>。</li>
+            <li><em>appsettings.json檔</em>：用於儲存專案相關的設定如資料庫連接字串等。</li>
+            <li><em>Program.cs檔</eem>：為專案起始類別，一般不會更動，下列程式碼設定預設頁面路由名稱及方式。</li>
+            <div class="codeblock">
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+            </div>
+            </ul>
+        </p> 
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">控制器(Controllers)</h3>
+        <p class="recipecontent">
+            控制器目的是處理使用者互動、使用模型，並在最終選取要呈現之檢視。<em>控制器為C#類別，包含許多方法，這些方法稱為動作(Action)</em>。新增控制器，請點選方案總管中Controllers後，選滑鼠右鍵，並選擇 <em>加入-控制器-MVC控制器-空白</em>，控制器名稱第一個字要大寫，系統會自動在控制器名稱加上Controller。每個控制器可包含許多動作，動作用於執行專案中的特定操作，控制器預設動作名稱為Index，使用者可輸入 <em>http://網站位址/控制器/動作</em> 來執行控制器中的特定動作。<em>動作宣告為public，並設定傳回值與動作名稱及代入值(如果有)，動作名稱第一個字為大寫。動作傳回值可以是特定類型、IActionResult(包含多種回類型如HTTP狀態、ViewResult、JSON、檢視、轉址等)或ActionResult&lt;傳回類型&gt;</em>，動作中 <em>return View()</em> 用於傳回該動作對應檢視畫面。<em>return View()</em>除了呼叫預設檢視頁面之外，還可使用 <em>return View("其他檢視名稱")、return View("其他檢視名稱",傳送參數物件)</em>。 如果動作包含代入值，使用者可輸入 <em>http://網站位址/控制器/動作/值1/值2</em> 或 <em>http://網站位址/控制器/動作?變數1=值1&變數2=值2</em> 來呼叫動作。         
+        </p>
+        <div class="codeblock">
+    練習：請在HomeController新增一動作名稱為Test、無代入值，傳回 南臺科技大學。
+    練習：請新增控制器名稱為TestController。
+    練習：請修改控制器Test可帶入兩個文字變數v1及v2，執行時請中斷控制器Test並檢視是否有代入值。
+        </div>
+      </div>
+      <div id="topic3">
+        <h3 class="recipetitle">檢視(Views)</h3>
+        <p class="recipecontent">
+            檢視用於顯示資訊或提供與使用者互動的介面，檢視會儲存於專案 <em>Views</em> 資料夾，通常檢視會依照控制器來區分，不同控制器的檢視，儲存於不同資料夾中，每個控制器的動作可以有其對應檢視頁面，檢視頁面的副檔名為 <em>.cshtml</em>，內容包含前端網頁設定及ASP.NET特定後端(Razor)或前端(Blazor)控制語言，不同於JavaScript，ASP.NET特定後端(Razor)或前端(Blazor)控制語言使用C#語法。新增動作對應的檢視頁面，請點選動作名稱，按下滑鼠右鍵選擇 <em>新增檢視-Razor檢視</em> 並使用預設設定。請注意在檢視頁面需使用 <em>@</em> 符號才能執行C#命令，如需放置多行C#命令時，請將命令至於 <em>@{   }</em>中。         
+        </p>
+        <div class="codeblock">
+    練習：請對HomeController動作Test新增檢視，並在檢視畫面輸入 南臺科技大學。
+        </div>
+      </div>
+      <div id="topic4">
+        <h3 class="recipetitle">模型(Models)</h3>
+        <p class="recipecontent">
+            模型為C#類別用於表示與處理專案所需資料，模型會儲存於專案 <em>Models</em> 資料夾，要新增模型請點選 <em>Models</em> 資料夾，按下滑鼠右鍵選擇 <em>加入-新增項目-類別</em> 並設定類別名稱，請注意類別名稱第一個字大寫。類別屬性宣告為 <em>public</em>，並加入資料類別與屬性名稱，並設定 <em>{get; set;}</em> 來設定資料屬性可讀取或可修改。在檢視頁面中要使用模型中類別需要有兩個步驟：
+            <ul>
+                <li>在檢視頁面開始宣告 <em>@model</em> 模型所在命名空間</em>，請注意：宣告必須使用小寫 <em>@model</em>。</li>
+                <li>在頁面要顯示時，使用 <em>@Model.欄位名稱</em> ，請注意取用傳遞物件 <em>@Model</em> 要用大寫。</li>
+              </ul>      
+        </p>
+        <div class="codeblock">
+    練習：請在Models新增Student.cs類別，包含 StudentId、StudentClass與StudentName。
+    練習：請在HomeController控制器中Index動作新增上一練習Student物件，並對 StudentId、StudentClass與SrudentName 設定值，之後將Student物件傳至Index動作對應畫面並顯示。
+        </div>
+      </div>
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>

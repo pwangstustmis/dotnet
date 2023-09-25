@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 2：Razor Script介紹</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">Razor Script語法</a>、<a href="#topic2" class="bookmark">Razor Script條件</a>、<a href="#topic3" class="bookmark">Razor Script迴圈</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">Razor Script語法</h3>
+        <p class="recipecontent">
+            Razor是將.NET程式碼內嵌到網頁中的標記語法，Razor語法包含Razor標記、C#和 HTML。伺服器端會解析Razor並將結果呈現於檢視頁面中，透過Razor，設計者設計動態資料導向的網頁應用。在檢視畫面中，設計者可以使用 <em>@</em> 符號加入Razor標記、C#和 HTML，請注意 <em>@</em> 後命令不可以有空白。使用Razor語法有下列三種方式：
+            
+            <ul>
+                <li>
+                    隱含：直接在 @符號之後輸入Razor運算式，例如在Index檢視頁面(Index.cshtml)中輸入 <em>@DateTime.Now.ToString("yyyy-MMM-dd")</em> 會顯示現在時間的年月日。但是隱含方式的方式僅能用於變數、保留字等，不能用於運算如 3+5 或包含空格。
+                </li>
+                <li>
+                    明確：直接在 @符號之後將Razor運算式放在小括符中，例如在Index檢視頁面(Index.cshtml)中輸入 <em>@(3+5)</em> 會顯示計算結果。明確方式可用於運算如 3+5 或包含空格。
+                </li>
+                <li>
+                    多行：將Razor運算式置於 <em>@{ }</em> 中。在多行命令中可以包含HTML標籤，如 <em>@{ &lt;h1&gt;Hello!&lt;/h1&gt; }</em>，同時在HTML標籤內如要使用Razor變數，則需使用 @ 符號，例如 <em>@{ var x="STUST"; &lt;h1&gt;@x&lt;/h1&gt; }</em>。
+                </li>
+              </ul>
+          </p>
+          
+            <div class="codeblock">
+    練習：請在HomeController中Index檢視頁面新增變數deposit(本金)值為 10000，變數interest(利率)值為 0.02，並使用Razor多行方式用大標題顯示deposit與interest。
+            </div>
+        </p> 
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">Razor Script條件</h3>
+        <p class="recipecontent">
+            Razor語法可使用條件結構 <em>@if、else if、else與 @switch</em>。    
+        </p>
+        <div class="codeblock">
+    @if {
+
+    }
+    else {
+
+    }
+
+    @if {
+
+    }
+    else if {
+
+    }
+    else {
+
+    }
+
+    @switch (變數) {
+        case 值:
+
+        break;
+        case 值:
+
+        break;
+        default:
+    }
+        </div>
+        <div class="codeblock">
+        練習：請在HomeController中Index檢視頁面設定變數dept值為 資訊管理系，並在對應檢視畫面判斷值是否為 資訊管理系，如果是請印出 是資訊管理系，否則請印出 不是資訊管理系。
+        </div>
+      </div>
+      <div id="topic3">
+        <h3 class="recipetitle">Razor Script迴圈</h3>
+        <p class="recipecontent">
+            Razor語法可使用迴圈結構 <em>@for、@foreach、@while與@do while</em>。         
+        </p>
+        <div class="codeblock">
+    @for (var 變數=起始值;結束條件;間距值) {
+
+    }
+
+    @foreach (var 變數 in 清單) {
+
+    }
+
+    @while (條件) {
+
+    }
+
+    @do {
+
+    } while (條件);
+        </div>
+        <div class="codeblock">
+    練習：請在HomeController中Index檢視頁面設定變數num值為 10，並利用迴圈顯示所有 1 到 變數dept值。
+        </div>
+      </div>
+      
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
