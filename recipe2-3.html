@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 3：資料傳遞(控制器-&gt;檢視)</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">ViewData、ViewBag、TempData</a>、<a href="#topic2" class="bookmark">資料模型</a></p>
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">ViewData、ViewBag、TempData</h3>
+        <p class="recipecontent">
+            使用者可在動作中將資料儲存於系統物件 <em>ViewData、ViewBag、TempData</em>，之後檢視頁面可於系統物件 <em>ViewData、ViewBag、TempData</em>取出資料，依序說明 <em>ViewData、ViewBag、TempData</em>差異：            
+            <ul>
+                <li>
+                    <em>ViewData</em>：<em>ViewData</em>透過(<em>ViewData["名稱"]=值</em>)的方式儲存資料，檢視頁面中透過 <em>@ViewData["名稱"]</em> 取得資料。請注意：<em>ViewData中除了字串類型外，其他類型都必須經過資料類型轉換</em>，同時<em>離開顯示頁面後，ViewData["名稱"]值將不存在</em>。
+                    <div class="codeblock">
+    練習：請在HomeController中Index動作新增ViewData變數dept值為 資訊管理系，並在對應檢視畫面顯示ViewData變數dept值。
+    練習：請在HomeController中Index動作新增ViewData變數income值為 50000，並在對應檢視畫面計算並顯示ViewData變數income * 10 結果。
+                    </div>
+                </li>
+                <li>
+                    <em>ViewBag</em>：<em>ViewBag</em>使用屬性方式將資料從控制器傳遞至檢視頁面(<em>ViewBag.屬性名稱=值</em>)，不同於<em>ViewData</em>，<em>ViewBag</em>支援動態資料類型，所以在檢視頁面取用時不需進行類型轉換。
+                    <div class="codeblock">
+    練習：請在HomeController中Index動作新增ViewBag變數dept值為 資訊管理系，並在對應檢視畫面顯示ViewData變數dept值。
+    練習：請在HomeController中Index動作新增ViewBag變數income值為 50000，並在對應檢視畫面計算並顯示ViewData變數income * 10 結果。
+                    </div>
+                </li>
+                <li>
+                    <em>TempData</em>：<em>TempData</em>設定方式同ViewData，不同的是他可藉由<em>TempData.keep("變數名稱")</em>讓變數值繼續保留或利用<em>TempData.peek("變數")</em>取得變數值並不移除。
+                    <div class="codeblock">
+    練習：請在HomeController中Index動作新增TempData變數dept值為 資訊管理系，並在Privacy檢視畫面顯示TempData變數dept值。
+    練習：請在HomeController中Index檢視畫面設定TempData變數income值為 50000，並設定連結執行HomeController中Index動作，請設定中斷檢查Index檢視畫面設定TempData變數income值。
+                    </div>
+                </li>
+              </ul>
+          </p>   
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">資料模型</h3>
+        <p class="recipecontent">
+            使用者可使用<em>return View("檢視名稱",資料模型物件)、return View(資料模型物件)</em>將資料模型傳至<em>特定檢視檔或相同於動作名稱檢視檔</em>，在檢視頁面開始須利用<em>@model</em>宣告資料模型定義，之後使用<em>@Model.屬性名稱</em>來取得資料模型屬性值。    
+        </p>
+        <div class="codeblock">
+    //在Models資料夾建立C#類別物件Student.cs類別並包含
+    //字串 sclass(班級)、字串 sname(姓名)、字串 sphone(電話)
+    //在HomeController Index動作中新增學生物件並將物件帶入Index動作檢視
+    //在Index.cshtml檔中使用下列程式碼顯示學生資料
+    @model 專案名稱.Models.Student
+    
+    &lt;h1&gt;@Model.sclass&lt;/h1&gt;
+    &lt;h1&gt;@Model.sname&lt;/h1&gt;
+    &lt;h1&gt;@Model.sphone&lt;/h1&gt;
+    
+        </div>
+        <div class="codeblock">
+        練習：請在HomeController中Index動作新增5為學生資料後，將資料代入Index檢視頁面，使用表格顯示這5為學生資料。
+        </div>
+      </div>
+      
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
