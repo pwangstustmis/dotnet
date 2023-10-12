@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 4：資料傳遞(檢視-&gt;控制器)</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">表單控制項name屬性</a>、<a href="#topic2" class="bookmark">HTML標籤協助</a>、<a href="#topic3" class="bookmark">資料模型資料註記</a></p>
+        <p class="recipecontent">
+          使用者可以在表單控制項設定<em>name</em>屬性變數名稱，並在對應動作設定<em>代入參數</em>，請注意：<em>對應動作代入參數名稱必須與表單name屬性名稱相同</em>。
+        </p>
+
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">表單控制項name屬性</h3>
+        <p class="recipecontent">
+            使用者可以在表單控制項設定<em>name</em>屬性變數名稱，並在對應動作設定<em>代入參數</em>，請注意：<em>對應動作代入參數名稱必須與表單name屬性名稱相同</em>。            
+          </p>
+        <div class="codeblock">
+    請在Index.cshtml檔設定下列表單
+    &lt;form action="~/Home/Privacy" method="post"&gt;
+        &lt;input type="text" name="name"/&gt;
+        &lt;input type="submit" value="送出"&gt;
+    &lt;/form&gt;
+
+    請在HomeController中Privacy動作設定
+    public IActionResult Privacy(string name)
+    {
+        return View();
+    }
+        </div>
+        <div class="codeblock">
+    練習：請在Index.cshtml設計註冊表單包含 帳號、密碼、Eamil、性別、興趣(核取方塊包含 游泳、健行)，並將資料送至Privacy動作，在Privacy動作使用ViewData將接收資料傳至Privacy.cshtml顯示
+        </div>
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">HTML標籤協助</h3>
+        <p class="recipecontent">
+            標籤協助讓伺服器端程式碼參、建立和轉譯檔案中的HTML元素，標籤協助如同HTML屬性標籤內嵌於HTML標籤中，常用標籤協助的MTHL標籤包含<em> 錨點標籤、Razor語法包含Razor標記、C#和 HTML</em>。伺服器端會解析Razor並將結果呈現於檢視頁面中，透過Razor，設計者設計動態資料導向的網頁應用。
+            <ul>
+                <li>
+                    錨點標籤：用於錨點標籤<em>a</em>，常用屬性包含 <em>asp-controller、asp-action、asp-route-{對應動作代入參數名稱}、asp-all-route-data</em>。
+                    <ul>
+                        <li>
+                            <em>asp-controller、asp-action</em>：用於指定連結錨點所連結的控制器與動作，例如當使用者設定<em> &lt;a href="/Home/Index"&gt;回首頁&lt;/a&gt;</em> 代表點選時會執行Home控制器中的Inde動作，利用錨點標籤協助可改寫為<em> &lt;a asp-controller="Home" asp-action="Index"&gt;回首頁&lt;/a&gt;</em>。
+                        </li>
+                        <li>
+                            <em>asp-route-{對應動作代入參數名稱}</em>：用於設定連結代入值，<em>例如Privacy動作有一代入值，而且代入變數名稱為sid，希望透過連結錨點將資料傳至Privacy動作的sid變數，連結標設定如 &lt;a asp-controller="Home" asp-action="Index" asp-route-sid="12"&gt;傳送資料&lt;/a&gt;</em>。
+                        </li>
+                        <li>
+                            <em>asp-all-route-data</em>：雖然可以用 <em>asp-route-{對應動作代入參數名稱}</em> 傳送資料到對應的動作，可是當有許多代入變數個時，連結標籤會非常長，因此我們可以使用<em>C#字典類型</em>來產生參數變數，例如動作Privacy代入變數包含 sid、sname與stel，我們可以用下列asp-all-route-data 方式來進行資料傳遞。
+                        </li>
+                        <div class="codeblock">
+    @{
+        var t=new Dictionary&lt;string,string&gt;{
+        {"sid","1"},
+        {"sname","甲"},
+        {"stel","1234567"}
+        };
+    }
+    &lt;a asp-controller="Home" asp-action="Privacy" asp-all-route-data="t"&gt;傳送資料&lt;/a&gt;
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    表單協助標籤：表單標籤<em>&lt;form&gt;</em>會使用<em>asp-controller、asp-action</em>來設定表單執行動作，搭配<em>資料模型</em>並使用<em>asp-for</em>將表單控制項對應資資料模型屬性。下拉式方塊控制項利用標籤協助 <em>asp-for</em> 來指定對應資料模型欄位，同時使用 <em>asp-items</em> 來設定下拉式方塊選項，下拉式方塊選項必須是 <em>List&lt;SelectListItem&gt;</em> 資料類型，每個 SelectListItem 均包含下拉式方塊顯示文字(Text)與選到值(Value)。
+                </li>
+                <div class="codeblock">
+    請在專案根目錄建立一個檔案夾名稱為ViewModels，在ViewModels目錄下新增Student類別包含
+    string? sid {get; set;}
+    string? sname {get; set;}
+    List&lt;SelectListItem&gt; 包含下拉式方塊顯示文字(Text)與選到值(Value)分別為 資管,1 企管,2 財金,3
+
+    在Index.cshtml設定表單並使用Student類別進行輸入包含 學號、姓名、系別，送出後將資料傳送至Privacy動作並顯示
+                </div>
+            </ul>
+        </p>
+        
+      </div>
+      
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>

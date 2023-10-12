@@ -14,6 +14,22 @@
       <div class="p-1 container-fluid">
         <p class="recipetitle">Recipe 3：資料傳遞(控制器-&gt;檢視)</p>
         <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">ViewData、ViewBag、TempData</a>、<a href="#topic2" class="bookmark">資料模型</a></p>
+        <p class="recipecontent">
+          資料傳遞(控制器-&gt;檢視)常用方式包含：
+          <ul>
+            <li>
+              透過系統變數<em>ViewData、ViewBag、TempData</em>，將傳送值在控制器中設定於系統變數中，之後在檢視檔案中從對應系統變數中取出傳送值。
+            </li>
+            <li>
+              透過資料模型並藉由<em>return View(資料模型變數)</em>將傳送值傳送至檢視檔案，之後在檢視檔案透過<em>@model</em>宣告資料模型定義，並透過<em>@Model</em>物件取得資料模型內容。
+            </li>
+            <div class="codeblock">
+  @model 專案資料模型定義命名空間位置
+
+  @Model.資料模型屬性
+            </div>
+          </ul>
+        </p>
       </div>
 
       <!-- main page -->
