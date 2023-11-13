@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>網頁程式設計</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Main Wrapper -->
+    <div class="main" id="top">
+      <div class="p-1 container-fluid">
+        <p class="recipetitle">Recipe 7：資料庫連接</p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">建立/連接資料庫</a>、<a href="#topic2" class="bookmark">安裝Entity Framework Core</a>、<a href="#topic3" class="bookmark">EF Core DB-First設定</a></p>
+        <p class="recipecontent">
+          本單元將涵蓋如何使用微軟北風資料庫、安裝<em>Entity Framework Core</em>套件、<em>EF DB-First</em>設定。
+        </p>
+
+      </div>
+
+      <!-- main page -->
+      <div id="topic1">
+        <h3 class="recipetitle">建立/連接資料庫</h3>
+        <p class="recipecontent">
+            請下載<em>FlipClass</em>中北風資料庫SQL檔，開啟專案並選擇專案選單<em>檢視-SQL Server物件總管</em>，點選重新整理後，選擇<em>(localdb)\MSSQLLocalDB</em>伺服器，按下滑鼠右鍵並選擇<em>新增查詢</em>，之後<em>全選北風資料庫SQL檔</em>內容並貼入新增查詢後，執行新增查詢，就會在伺服器中產生Northwind資料庫。            
+          </p>
+      </div>
+      <div id="topic2">
+        <h3 class="recipetitle">安裝Entity Framework Core</h3>
+        <p class="recipecontent">
+            .Net Core將使用<em>Entity Framework Core</em>進型資料庫操作，專案需安裝<em>Microsoft.EntityFrameworkCore.SqlServer與Microsoft.EntityFrameworkCore.Tools</em>套件，操作步驟如下：
+            <ol>
+                <li>
+                    選擇 <em>工具 - NuGet套件管理員 - 管理方案的NuGet套件</em>
+                </li>
+                <li>
+                    選擇 <em>瀏覽</em>並輸入<em>Microsoft.EntityFrameworkCore.SqlServer</em>，選擇最新版本，勾選右邊對應專案後選擇<em>安裝</em>。
+                </li>
+                <li>
+                    選擇 <em>瀏覽</em>並輸入<em>Microsoft.EntityFrameworkCore.Tools</em>，選擇最新版本，勾選右邊對應專案後選擇<em>安裝</em>。
+                </li>               
+            </ol>
+        </p>       
+      </div>
+      <div id="topic3">
+        <h3 class="recipetitle">EF Core DB-First設定</h3>
+        <p class="recipecontent">
+            請選擇 <em>工具 - NuGet套件管理員 - 套件管理員主控台</em>，在主控台輸入下列命令：
+        </p>
+        <div class="codeblock">
+    Scaffold-DbContext -Connection "Server=資料庫伺服器;Database=資料庫名稱;Trusted_Connection=True; User ID=資料庫伺服器名稱;Password=資料庫伺服器密碼" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force -Context 資料庫名稱DBContext
+
+    上述命令
+    資料庫伺服器為 (localdb)\MSSQLLocalDB
+    資料庫名稱為 Northwind
+    因為是本地端登入帳號，因此可以移除User ID及Password
+    -OutputDir 用於設定資料表資料模型檔案輸出位置
+    -Context 用於設定資料庫連接檔案名稱
+        </div>
+      </div>
+      
+              
+    </div>
+    <a class="btn btn-primary topbtn" href="#top">最上頁</a>
+    <a class="btn btn-danger backbtn" href="index.html">課程選單</a>
+
+    <!-- bootstrap js -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>  
+    
+  </body>
+</html>
