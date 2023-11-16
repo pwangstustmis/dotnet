@@ -13,7 +13,7 @@
     <div class="main" id="top">
       <div class="p-1 container-fluid">
         <p class="recipetitle">Recipe 7：資料庫連接</p>
-        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">建立/連接資料庫</a>、<a href="#topic2" class="bookmark">安裝Entity Framework Core</a>、<a href="#topic3" class="bookmark">EF Core DB-First設定</a></p>
+        <p class="recipecontent">本單元將說明 <a href="#topic1" class="bookmark">建立/連接資料庫</a>、<a href="#topic2" class="bookmark">安裝Entity Framework Core</a>、<a href="#topic3" class="bookmark">EF Core DB-First設定</a>、<a href="#topic4" class="bookmark">LINQ命令</a></p>
         <p class="recipecontent">
           本單元將涵蓋如何使用微軟北風資料庫、安裝<em>Entity Framework Core</em>套件、<em>EF DB-First</em>設定。
         </p>
@@ -24,7 +24,7 @@
       <div id="topic1">
         <h3 class="recipetitle">建立/連接資料庫</h3>
         <p class="recipecontent">
-            請下載<em>FlipClass</em>中北風資料庫SQL檔，開啟專案並選擇專案選單<em>檢視-SQL Server物件總管</em>，點選重新整理後，選擇<em>(localdb)\MSSQLLocalDB</em>伺服器，按下滑鼠右鍵並選擇<em>新增查詢</em>，之後<em>全選北風資料庫SQL檔</em>內容並貼入新增查詢後，執行新增查詢，就會在伺服器中產生Northwind資料庫。            
+            請下載<em>FlipClass</em>中北風資料庫SQL檔，開啟專案並選擇專案選單<em>檢視-SQL Server物件總管</em>，點選重新整理後，選擇<em>(localdb)\MSSQLLocalDB</em>伺服器，按下滑鼠右鍵並選擇<em>新增查詢</em>，之後<em>全選北風資料庫SQL檔</em>內容並貼入新增查詢後，執行新增查詢，就會在伺服器中產生Northwind資料庫。(<em>如果沒有看到(localdb)\MSSQLLocalDB伺服器，請點選 檢視-SQL Server伺服器總管，點選 SQL Server 按下滑鼠右鍵，選擇 加入SQL Server，選擇 本機-MSSQLLocalDB</em>)       
           </p>
       </div>
       <div id="topic2">
@@ -59,6 +59,89 @@
     -OutputDir 用於設定資料表資料模型檔案輸出位置
     -Context 用於設定資料庫連接檔案名稱
         </div>
+      </div>
+
+      <div id="topic4">
+        <h3 class="recipetitle">LINQ 命令</h3>
+        <p class="recipecontent">
+            資料庫操作是透過 <em>資料庫名稱DBContext</em> 類別來進行，因此資料庫 <em>新增、查詢、修改、刪除</em> 動作均透過下列命令執行：
+        </p>
+        <div class="codeblock">
+    using (var ctx=new 資料庫Context())
+    {
+      //資料庫操作命令
+    }
+        </div>
+        <p class="recipecontent">
+          以下將針對北風資料庫中員工資料表(Employees) <em>新增、查詢、修改、刪除</em> 動作進行說明。
+          <ul>
+            <li>
+              選取全部資料：
+            </li>
+            <div class="codeblock">
+              using (var ctx=new 資料庫Context())
+              {
+                //傳回所有員工資料包含全部欄位
+                var e=ctx.Employees.ToList();
+              }
+            </div>
+            <li>
+              選取全部資料部分欄位(EmployeeID、FirstName、LastName)：
+            </li>
+            <div class="codeblock">
+              using (var ctx=new 資料庫Context())
+              {
+                //傳回所有員工資料包含全部欄位
+                var e=ctx.Employees.Select(x=>new {x.EmployeeId,x.FirstName,x.LastName}).ToList();
+              }
+            </div>
+            <li>
+              選取城市(City)欄位為London及Seattle員工資料部分欄位(EmployeeID、FirstName、LastName)：
+            </li>
+            <div class="codeblock">
+              using (var ctx=new 資料庫Context())
+              {
+                //傳回所有員工資料包含全部欄位
+                var e=ctx.Employees.Select(x=>new {x.EmployeeId,x.FirstName,x.LastName}).Where(x=>x.City=="London" || x.City=="Seattle").ToList();
+              }
+            </div>
+            <li>
+              選取城市(City)欄位為London及Seattle員工資料部分欄位(EmployeeID、FirstName、LastName)並依照FirstName做排序：
+            </li>
+            <div class="codeblock">
+              using (var ctx=new 資料庫Context())
+              {
+                //傳回所有員工資料包含全部欄位
+                var e=ctx.Employees.Select(x=>new {x.EmployeeId,x.FirstName,x.LastName}).Where(x=>x.City=="London" || x.City=="Seattle").OrderBy(x=>x.FirstName).ToList();
+              }
+            </div>
+            <li>
+              選取城市(City)欄位為London及Seattle員工資料部分欄位(EmployeeID、FirstName、LastName)並依照FirstName、LastName做排序：
+            </li>
+            <div class="codeblock">
+              using (var ctx=new 資料庫Context())
+              {
+                //傳回所有員工資料包含全部欄位
+                var e=ctx.Employees.Select(x=>new {x.EmployeeId,x.FirstName,x.LastName}).Where(x=>x.City=="London" || x.City=="Seattle").OrderBy(x=>x.FirstName).ThenOrderBy(x=>x.LastName).ToList();
+              }
+            </div>
+            <li>資料庫新增、修改、刪除</li>
+            <div class="codeblock">
+  資料庫CRUD
+
+  方法        必須執行
+  Add         SaveChanges()
+  AddAsync    SaveChangesAsync
+  AddRange    SaveChanges()
+
+  Remove      SaveChanges()
+  RemoveRange SaveChanges()
+
+  Update      SaveChanges()
+  UpdateRange SaveChanges()
+            </div>
+          </ul>
+        </p>
       </div>
       
               
